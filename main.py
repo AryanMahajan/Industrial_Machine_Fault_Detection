@@ -24,19 +24,21 @@ x_test,y_test = create_test_data()
 #normalizing x_test
 x_test = x_test.reshape(-1, 50, 50, 1)
 
-
+# Printing th accuracy of the model with built in function of tensorflow
 print("Evaluate on test data")
 results = model.evaluate(x_test, y_test, batch_size=128)
 print("test loss, test acc:", results)
 
+# Letting the model to predict on Test data
 predictions = model.predict(x_test)
 
 model_prediction = []
 
+#appending the predictions into a new list
 for prediction in predictions:
     model_prediction.append(round(prediction[0]))
 
-
+# Making our own functino to find the accuracy of the model which gives same output to the 5th to 6th decimal place as the built in function
 def calculate_model_accuracy(model_prediction,y_test):
     correct = 0
     for i in range (0, len(model_prediction)):
@@ -63,7 +65,7 @@ def create_logs(model_prediction, y_test):
 
 
 def pushing_in_logs(model_prediciton, y_test, path):
-    # Checking if pickle files are htere or not
+    # Checking if pickle files are there or not
     model_prediciton_path = f'{path}\model_prediction.csv'
     y_test_path = f'{path}\y_test.csv'
     accuracy_path = f'{path}\{"accuracy.csv"}'
@@ -80,6 +82,6 @@ def pushing_in_logs(model_prediciton, y_test, path):
         writer = csv.writer(file)
         writer.writerow([calculate_model_accuracy(model_prediciton, y_test)])
 
-print("CREATING LOGS")
+print("CREATING LOGS!!!")
 create_logs(model_prediction, y_test)
 print("EXITING!!!!")
