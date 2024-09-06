@@ -65,7 +65,6 @@ def create_logs(model_prediction, y_test):
 
 
 def pushing_in_logs(model_prediciton, y_test, path):
-    # Checking if pickle files are there or not
     model_prediciton_path = f'{path}\model_prediction.csv'
     y_test_path = f'{path}\y_test.csv'
     accuracy_path = f'{path}\{"accuracy.csv"}'
