@@ -41,7 +41,7 @@ def training_model():
     model.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics=["accuracy"])
 
     #Fitting the model
-    model.fit(x_train,y_train, batch_size=32, validation_split = 0.1, epochs = 5, callbacks=[callbacks])
+    model.fit(x_train,y_train, batch_size=32, validation_split = 0.1, epochs = 20, callbacks=[callbacks])
 
     #Saving the model
     model.save("model.keras")
