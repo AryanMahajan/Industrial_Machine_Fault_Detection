@@ -13,7 +13,7 @@ if os.path.exists("model.keras"):
     model = tf.keras.models.load_model("model.keras")
 else:
     print("Training Model")
-    training_model()
+    history = training_model()
     model = tf.keras.models.load_model("model.keras")
 
 #importing test data
