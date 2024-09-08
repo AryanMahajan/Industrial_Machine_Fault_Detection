@@ -8,10 +8,6 @@ x_train, y_train = create_training_data()
 
 x_train = x_train.reshape(-1, 50, 50, 1)
 
-class myCallback(tf.keras.callbacks.Callback):
-    def on_epoch_end(self, epoch, logs={}):
-        if(logs.get('accuracy')>0.95):
-            print(f"\nReached 95% accuracy so cancelling training!")
 
 def training_model():
     
@@ -41,7 +37,7 @@ def training_model():
     model.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics=["accuracy"])
 
     #Fitting the model
-    history = model.fit(x_train,y_train, batch_size=32, validation_split = 0.1, epochs = 20, callbacks=[callbacks])
+    history = model.fit(x_train,y_train, batch_size=32, validation_split = 0.1, epochs = 10)
 
     #Saving the model
     model.save("model.keras")

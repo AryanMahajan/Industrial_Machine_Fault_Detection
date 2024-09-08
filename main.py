@@ -6,6 +6,7 @@ import os
 from datetime import datetime, date
 import time
 import csv
+import pickle
 
 #Checking if the model exists or not
 if os.path.exists("model.keras"):
@@ -15,6 +16,14 @@ else:
     print("Training Model")
     history = training_model()
     model = tf.keras.models.load_model("model.keras")
+
+def saving_history(history):
+    #saving the history
+    with open('history.pkl', 'wb') as f:
+        pickle.dump(history, f)
+
+print("SAVING HISTORY")
+saving_history(history)
 
 #importing test data
 x_test,y_test = create_test_data()
